@@ -749,13 +749,13 @@ C     SUBROUTINE FOR INVERTING TRIDIAGONAL MATRIX :
         implicit real*8 (a-h,o-z)
         parameter (nmax=129)
         dimension gam(nmax),a(nmax),b(nmax),c(nmax),r(nmax),u(nmax)
-        if(b(1).eq.0.d0) stop
+        if(b(1).eq.0.d0) pause
         bet=b(1)
         u(1)=r(1)/bet
         do 11 j=2,n
           gam(j)=c(j-1)/bet
           bet=b(j)-a(j)*gam(j)
-          if(bet.eq.0.d0) stop
+          if(bet.eq.0.d0) pause
           u(j)=(r(j)-a(j)*u(j-1))/bet
   11    continue
         do 12 j=n-1,1,-1
@@ -811,7 +811,7 @@ C       The subroutine plgndr calculates Legendre polynomials.
 
         function plgndr(l,m,x)
         implicit real*8(a-h,o-z)
-        if(m.lt.0.or.m.gt.l.or.abs(x).gt.1.0d0)stop 'bad arguments'
+        if(m.lt.0.or.m.gt.l.or.abs(x).gt.1.0d0)pause 'bad arguments'
         pmm=1.0d0
         if(m.gt.0) then
           somx2=dsqrt((1.0d0-x)*(1.0d0+x))
